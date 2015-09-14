@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    /** @type {HTMLElement} */
+    var BinaryPattern = Object.create(HTMLElement.prototype);
+    // Refers to the "importer", which is index.html
+    var targetDocument = document;
+
+    // Fires when an instance of the element is created
+    BinaryPattern.createdCallback = function () {
+        // Creates the shadow root
+        var value = this.getAttribute('bits');
+
+        if (value.startsWith('0x')) {
+            this.fromHex(value.substr(2));
+        }
+    };
+
+    /**
+     *
+     * @param hex {String}
+     */
+    BinaryPattern.fromHex = function (hex) {
+        var shadowRoot = this.createShadowRoot();
+        var hexValues = hex.toUpperCase().split('');
+
+
+        for (var i = 0; i < hexValues.length; i++) {
+            var hexValue = hexValues[0];
+            var div = targetDocument.createElement('div');
+            div.setAttribute('class', 'hash' + hexValue);
+            div.setAttribute('alt', hexValue);
+            shadowRoot.appendChild(div);
+        }
+    };
+
+    window.MyElement = document.registerElement('binary-pattern', {
+        prototype: BinaryPattern
+    });
+</script>

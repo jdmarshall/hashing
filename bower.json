@@ -1,0 +1,7 @@
+{
+  "name": "hashing",
+  "dependencies": {
+    "jquery": "^1.11.3",
+    "webcomponents.js": "~0.7.12"
+  }
+}
