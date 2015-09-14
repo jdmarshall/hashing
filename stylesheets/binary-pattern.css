@@ -1,0 +1,149 @@
+binary-pattern {
+    padding: 1px;
+    display: block;
+
+    min-height: 15px;
+    overflow: hidden;
+}
+
+.hex {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    background-origin: padding-box;
+
+    display: block;
+    float: left;
+
+    width: 18px;
+    height: 15px;
+}
+
+.hex_0 {
+    background-color: white;
+}
+
+.hex_1 {
+    background: linear-gradient(
+            to right,
+            white, white 75%,
+            #339 75%
+    );
+}
+
+.hex_2 {
+    background: linear-gradient(
+            to right,
+            white 50%,
+            #339 50%, #339 75%,
+            white 75%
+    );
+}
+
+.hex_3 {
+    background: linear-gradient(
+            to right,
+            white 50%,
+            #339 50%, #339 100%
+    );
+}
+
+.hex_4 {
+    background: linear-gradient(
+            to right,
+            white 25%,
+            #339 25%, #339 50%,
+            white 50%
+    );
+}
+
+.hex_5 {
+    background: linear-gradient(
+            to right,
+            white 25%,
+            #339 25%, #339 50%,
+            white 50%, white 75%,
+            #339 75%
+    );
+}
+
+.hex_6 {
+    background: linear-gradient(
+            to right,
+            white 25%,
+            #339 25%, #339 75%,
+            white 75%
+    );
+}
+
+.hex_7 {
+    background: linear-gradient(
+            to right,
+            white 25%,
+            #339 25%, #339 100%
+    );
+}
+
+.hex_8 {
+    background: linear-gradient(
+            to right,
+            #339 25%,
+            white 25%, white 100%
+    );
+}
+
+.hex_9 {
+    background: linear-gradient(
+            to right,
+            #339 25%,
+            white 25%, white 75%,
+            #339 75%, #339 100%
+    );
+}
+
+.hex_A {
+    background: linear-gradient(
+            to right,
+            #339 25%,
+            white 25%, white 50%,
+            #339 50%, #339 75%,
+            white 75%, white 100%
+    );
+}
+
+.hex_B {
+    background: linear-gradient(
+            to right,
+            #339 25%,
+            white 25%, white 50%,
+            #339 50%, #339 100%
+    );
+}
+
+.hex_C {
+    background: linear-gradient(
+            to right,
+            #339 50%,
+            white 50%, white 100%
+    );
+}
+
+.hex_D {
+    background: linear-gradient(
+            to right,
+            #339 50%,
+            white 50%, white 75%,
+            #339 75%, #339 100%
+    );
+}
+
+.hex_E {
+    background: linear-gradient(
+            to right,
+            #339 75%,
+            white 75%, white 100%
+    );
+}
+
+.hex_F {
+    background-color: #339;
+}
