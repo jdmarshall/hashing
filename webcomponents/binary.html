@@ -24,11 +24,11 @@
 
 
         for (var i = 0; i < hexValues.length; i++) {
-            var hexValue = hexValues[0];
-            var div = targetDocument.createElement('div');
-            div.setAttribute('class', 'hash' + hexValue);
-            div.setAttribute('alt', hexValue);
-            shadowRoot.appendChild(div);
+            var hexValue = hexValues[i];
+            var element = targetDocument.createElement('span');
+            element.setAttribute('class', 'hex hex_' + hexValue);
+            element.setAttribute('alt', hexValue);
+            shadowRoot.appendChild(element);
         }
     };
 
