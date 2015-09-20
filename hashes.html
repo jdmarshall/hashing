@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>Hashing by jdmarshall</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/binary-pattern.css" media="screen">
+
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/webcomponents.js/webcomponents.js"></script>
+
+    <!-- Imports custom element -->
+    <link rel="import" href="webcomponents/binary.html">
+</head>
+<body>
+<section class="page-header">
+    <h1 id="hashes">What's a Cryptographic Hash?</h1>
+</section>
+
+<section class="main-content">
+    <h2 id="intro">Hashes in a nutshell</h2>
+
+    <p>
+        We use hashes relatively frequently in programming, although often you aren't even aware of it.  If you attended
+        a CS degree they probably talked about them quite a bit. With a normal hash, you take some sort of data and
+        turn it into a short number.  That's a hash.  In doing this operation, you make reasonable attempts to insure
+        that very few 'interesting' values result in the same hash, known as a Hash Collision.  There is a ton of
+        literature on the topic, but sadly in practice we haven't done a very good job of achieving it, and in fact
+        there's now a whole class of Denial of Service attacks against web servers based on this observation.
+    </p>
+
+    <p>
+        When the chips are down and you really truly need to make sure that no two legal inputs result in the same
+        output, we turn to Cryptographic Hashes.
+    </p>
+
+    <h2>Cryptographic Hashes</h2>
+
+    <p>
+        A lot more effort goes into generating a cryptographic hash, but the payoff is that they are useful for a great
+        many things we would never trust a regular hash to do, because they offer certain guarantees that allow us to
+        trust them.  When that trust begins to break down (faster computers, cryptographic research, etc), we find a new
+        hash and keep using them.
+    </p>
+    <h3>Larger space</h3>
+    <p>
+        A cryptographic hash generally takes a piece of data and gives you back a much longer number.  By the Pigeonhole
+        Principle, how many distinct values you can represent is limited by the number of representations you have.
+        Since most hashes, cryptographic or otherwise, guarantee that all output states are possible, it follows that a
+        longer hash has fewer collisions.
+    </p>
+
+    <h3>Mixing</h3>
+
+    <p>
+        But a larger space isn't much of a guarantee, if two nearly identical messages result in the same output.
+        There's a huge difference between "I owe you $10" and "I owe you $1000".  It's not enough for hashes to just
+        create a number.  Similar inputs must result in extremely different outputs, and we grade hashes by how much
+        a new value 'perturbs' or 'mixes up' the output.
+    </p>
+
+    <p>
+        For mixing to be done properly, it must posses one more quality.  For any message, I have a hash.  By adding
+        onto that message, I should be able to generate any other possible hash.  To put this another way, if Mixing is
+        working properly, the algorithm should never get 'stuck in a rut'.
+    </p>
+
+    <h4>Seeding</h4>
+    <p>
+        As part of the mixing process, we also want short messages to exhibit this behavior (there's a second reason
+        for this, which we'll go into shortly) as soon as possible.  Since part of the mixing function often involves
+        looking at how many ones and zeroes are in the output, starting with '0' would make those functions 'start'
+        slowly.  To fight that we use seeds, otherwise known as Magic Numbers.
+    </p>
+
+    <p>
+        For instance, this is the SHA-256 hash when the input is zero bytes:
+    </p>
+
+    <binary-pattern bits="0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"></binary-pattern>
+
+    <p>
+        And this is the SHA-256 hash for one whitespace character.  As you can see, even one byte changed quite a few bits in the output:
+    </p>
+
+    <binary-pattern bits="0xe16f1596201850fd4a63680b27f603cb64e67176159be3d8ed78a4403fdb1700"></binary-pattern>
+
+    <p>
+        Magic numbers are a tricky thing though.  Cryptographers are naturally paranoid, and if someone like NIST or the
+        NSA comes to you and says "trust us" they try not to (and we have a recent example when it turned out they were
+        lying).  So most hashes use a magic number that is based on some simple mathematical progression, based on
+        something like <code>e</code>, &pi;, fibonacci numbers, or primes.  For Sha-2, you start with the decimal part
+        of the square and cube roots of the first 8 prime numbers.
+    </p>
+</section>

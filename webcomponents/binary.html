@@ -27,7 +27,7 @@
             var hexValue = hexValues[i];
             var element = targetDocument.createElement('span');
             element.setAttribute('class', 'hex hex_' + hexValue);
-            element.setAttribute('alt', hexValue);
+            element.setAttribute('title', hexValue);
             shadowRoot.appendChild(element);
         }
     };
