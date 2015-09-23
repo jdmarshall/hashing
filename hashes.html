@@ -85,10 +85,22 @@
     <binary-pattern bits="0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"></binary-pattern>
 
     <p>
-        And this is the SHA-256 hash for one whitespace character.  As you can see, even one byte changed quite a few bits in the output:
+        And this is the SHA-256 hash for one whitespace character:
     </p>
 
     <binary-pattern bits="0xe16f1596201850fd4a63680b27f603cb64e67176159be3d8ed78a4403fdb1700"></binary-pattern>
+
+    <p>And here is the difference between these two hashes.  As you can see, quite a few bits have flipped:</p>
+
+    <binary-pattern
+            bits="0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            versus="0xe16f1596201850fd4a63680b27f603cb64e67176159be3d8ed78a4403fdb1700"
+            ></binary-pattern>
+
+    <p>
+        Remember, we only added one byte to the output, and all of those bits were flipped.  That's the mixing
+        aspect of the hash algorithm.
+    </p>
 
     <p>
         Magic numbers are a tricky thing though.  Cryptographers are naturally paranoid, and if someone like NIST or the

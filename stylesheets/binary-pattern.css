@@ -6,6 +6,15 @@ binary-pattern {
     overflow: hidden;
 }
 
+binary-pattern .display {
+    display: inline-block;
+    background-color: #339;
+}
+
+.display.diff {
+    background-color: #383;
+}
+
 .hex {
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -26,7 +35,7 @@ binary-pattern {
     background: linear-gradient(
             to right,
             white, white 75%,
-            #339 75%
+            transparent 75%
     );
 }
 
@@ -34,7 +43,7 @@ binary-pattern {
     background: linear-gradient(
             to right,
             white 50%,
-            #339 50%, #339 75%,
+            transparent 50%, transparent 75%,
             white 75%
     );
 }
@@ -43,7 +52,7 @@ binary-pattern {
     background: linear-gradient(
             to right,
             white 50%,
-            #339 50%, #339 100%
+            transparent 50%, transparent 100%
     );
 }
 
@@ -51,7 +60,7 @@ binary-pattern {
     background: linear-gradient(
             to right,
             white 25%,
-            #339 25%, #339 50%,
+            transparent 25%, transparent 50%,
             white 50%
     );
 }
@@ -60,9 +69,9 @@ binary-pattern {
     background: linear-gradient(
             to right,
             white 25%,
-            #339 25%, #339 50%,
+            transparent 25%, transparent 50%,
             white 50%, white 75%,
-            #339 75%
+            transparent 75%
     );
 }
 
@@ -70,7 +79,7 @@ binary-pattern {
     background: linear-gradient(
             to right,
             white 25%,
-            #339 25%, #339 75%,
+            transparent 25%, transparent 75%,
             white 75%
     );
 }
@@ -79,14 +88,14 @@ binary-pattern {
     background: linear-gradient(
             to right,
             white 25%,
-            #339 25%, #339 100%
+            transparent 25%, transparent 100%
     );
 }
 
 .hex_8 {
     background: linear-gradient(
             to right,
-            #339 25%,
+            transparent 25%,
             white 25%, white 100%
     );
 }
@@ -94,18 +103,18 @@ binary-pattern {
 .hex_9 {
     background: linear-gradient(
             to right,
-            #339 25%,
+            transparent 25%,
             white 25%, white 75%,
-            #339 75%, #339 100%
+            transparent 75%, transparent 100%
     );
 }
 
 .hex_A {
     background: linear-gradient(
             to right,
-            #339 25%,
+            transparent 25%,
             white 25%, white 50%,
-            #339 50%, #339 75%,
+            transparent 50%, transparent 75%,
             white 75%, white 100%
     );
 }
@@ -113,16 +122,16 @@ binary-pattern {
 .hex_B {
     background: linear-gradient(
             to right,
-            #339 25%,
+            transparent 25%,
             white 25%, white 50%,
-            #339 50%, #339 100%
+            transparent 50%, transparent 100%
     );
 }
 
 .hex_C {
     background: linear-gradient(
             to right,
-            #339 50%,
+            transparent 50%,
             white 50%, white 100%
     );
 }
@@ -130,20 +139,20 @@ binary-pattern {
 .hex_D {
     background: linear-gradient(
             to right,
-            #339 50%,
+            transparent 50%,
             white 50%, white 75%,
-            #339 75%, #339 100%
+            transparent 75%, transparent 100%
     );
 }
 
 .hex_E {
     background: linear-gradient(
             to right,
-            #339 75%,
+            transparent 75%,
             white 75%, white 100%
     );
 }
 
 .hex_F {
-    background-color: #339;
+    background-color: transparent;
 }

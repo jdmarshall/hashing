@@ -6,11 +6,22 @@
 
     // Fires when an instance of the element is created
     BinaryPattern.createdCallback = function () {
+        var shadowRoot = this.createShadowRoot();
+        var element = targetDocument.createElement('span');
+        element.setAttribute('class', 'display');
+
+        shadowRoot.appendChild(element);
+
         // Creates the shadow root
         var value = this.getAttribute('bits');
+        var versus = this.getAttribute('versus');
 
         if (value.startsWith('0x')) {
-            this.fromHex(value.substr(2));
+            if (versus !== null && (versus.startsWith('0x'))) {
+                this.fromDiff(element, value.substr(2), versus.substr(2));
+            } else {
+                this.fromHex(element, value.substr(2));
+            }
         }
     };
 
@@ -18,18 +29,44 @@
      *
      * @param hex {String}
      */
-    BinaryPattern.fromHex = function (hex) {
-        var shadowRoot = this.createShadowRoot();
+    BinaryPattern.fromHex = function (parent, hex) {
         var hexValues = hex.toUpperCase().split('');
-
 
         for (var i = 0; i < hexValues.length; i++) {
             var hexValue = hexValues[i];
             var element = targetDocument.createElement('span');
+
             element.setAttribute('class', 'hex hex_' + hexValue);
             element.setAttribute('title', hexValue);
-            shadowRoot.appendChild(element);
+
+            parent.appendChild(element);
         }
+    };
+
+    /**
+     *
+     * @param hexA {String}
+     * @param hexB {String}
+     */
+    BinaryPattern.fromDiff = function (parent, hexA, hexB) {
+        var diff = [];
+        var hexAValues = hexA.toUpperCase().split('');
+        var hexBValues = hexB.toUpperCase().split('');
+
+        for (var i = 0; i < hexA.length && i < hexB.length; i++) {
+            diff[i] = this.diff(hexAValues[i], hexBValues[i]);
+        }
+
+        parent.setAttribute('class', parent.getAttribute('class') + ' diff');
+
+        this.fromHex(parent, diff.join(''));
+    };
+
+    BinaryPattern.diff = function (hexA, hexB) {
+        var valueA = parseInt(hexA, 16);
+        var valueB = parseInt(hexB, 16);
+
+        return (valueA ^ valueB).toString(16);
     };
 
     window.MyElement = document.registerElement('binary-pattern', {
