@@ -61,7 +61,8 @@
         But a larger space isn't much of a guarantee, if two nearly identical messages result in the same output.
         There's a big difference between "I owe you $10" and "I owe you $50".  It's not enough for hashes to just
         create a number.  Similar inputs must result in extremely different outputs, and we grade hashes by how much
-        a new value 'perturbs' or 'mixes up' the output.
+        a new value 'perturbs' or 'mixes up' the output.  The mixing means that collisions don't generally happen by
+        accident, and are nearly impossible to cause to happen on purpose.
     </p>
 
     <p>I owe you $10</p>
@@ -82,7 +83,9 @@
     <p>
         For mixing to be done properly, it must posses one more quality.  For any message, I have a hash.  By adding
         onto that message, I should be able to generate any other possible hash.  To put this another way, if Mixing is
-        working properly, the algorithm should never get 'stuck in a rut'.
+        working properly, the algorithm should never get 'stuck in a rut'.  This means that changing a small part of a
+        very long message is just as hard as changing a short message, because the qualities of the hash don't degrade
+        with any particular inputs.
     </p>
 
     <h4>Seeding</h4>
