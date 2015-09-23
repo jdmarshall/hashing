@@ -59,10 +59,25 @@
 
     <p>
         But a larger space isn't much of a guarantee, if two nearly identical messages result in the same output.
-        There's a huge difference between "I owe you $10" and "I owe you $1000".  It's not enough for hashes to just
+        There's a big difference between "I owe you $10" and "I owe you $50".  It's not enough for hashes to just
         create a number.  Similar inputs must result in extremely different outputs, and we grade hashes by how much
         a new value 'perturbs' or 'mixes up' the output.
     </p>
+
+    <p>I owe you $10</p>
+
+    <binary-pattern bits="0x9ccaf59bc1175fa65ff793246eb342a2ef91614c4d038f186f14a39862da031e"></binary-pattern>
+
+    <p>I owe you $50</p>
+
+    <binary-pattern bits="0x7bb6318685092bc9d5dad0e0562e260f524f51e13ab38ba9e6dc6b95f22a474c"></binary-pattern>
+
+    <p>The difference between these two hashes is:</p>
+
+    <binary-pattern bits="0x9ccaf59bc1175fa65ff793246eb342a2ef91614c4d038f186f14a39862da031e"
+            versus="0x7bb6318685092bc9d5dad0e0562e260f524f51e13ab38ba9e6dc6b95f22a474c"></binary-pattern>
+
+    <p>That's a one bit difference in the input, and almost half of the bits were changed.  All due to mixing</p>
 
     <p>
         For mixing to be done properly, it must posses one more quality.  For any message, I have a hash.  By adding
@@ -98,8 +113,7 @@
             ></binary-pattern>
 
     <p>
-        Remember, we only added one byte to the output, and all of those bits were flipped.  That's the mixing
-        aspect of the hash algorithm.
+        Due to the structure of the algorithm, there is strong mixing even with a small input.
     </p>
 
     <p>
@@ -109,4 +123,5 @@
         something like <code>e</code>, &pi;, fibonacci numbers, or primes.  For Sha-2, you start with the decimal part
         of the square and cube roots of the first 8 prime numbers.
     </p>
+
 </section>
