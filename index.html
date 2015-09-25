@@ -18,101 +18,89 @@
     <link rel="import" href="webcomponents/binary.html">
 </head>
 <body>
-<section class="page-header">
+<header class="page-header">
     <h1 class="project-name">Hashing</h1>
 
     <h2 class="project-tagline"></h2>
     <a href="https://github.com/jdmarshall/hashing" class="btn">View on GitHub</a>
-</section>
+</header>
 
-<section class="main-content">
-    <h3 id="intro">Introduction</h3>
+<div class="main-content">
+    <article>
+        <section class="intro">
 
-    <p>
-        There are reams of literature on what makes a good cryptographic hash.  Every ten years or so we have a
-        competition to pick some new ones. You may have seen pseudocode.  You may have seen diagrams of the inner
-        workings.  Maybe you can even read and understand the code. But have you ever seen a good illustration of how
-        they work?  I don't think I have.
-    </p>
+            <h3 id="intro">Introduction</h3>
 
-    <p>
-        Recently I was toying around with Bitcoin.  I understood pretty quickly why CPU and GPU miners were no longer
-        competetive with custom hardware, but what I couldn't figure out is why GPU miners weren't much faster than CPU
-        miners (at least not on my hardware).
-    </p>
+            <p>
+                There are reams of literature on what makes a good cryptographic hash.  Every ten years or so we have a
+                competition to pick some new ones. You may have seen pseudocode.  You may have seen diagrams of the inner
+                workings.  Maybe you can even read and understand the code. But have you ever seen a good illustration of how
+                they work?  I don't think I have.
+            </p>
 
-    <p>
-        I wanted visuals, something a bit more accessible, like <a href="http://gizmodo.com/mining-bitcoin-with-pencil-and-paper-1640353309">mining bitcoin with pencil and paper</a>,
-        but with less talking and more pictures.  What I'd like to show, among other things, is how a small change to
-        the input changes the output drastically.
-    </p>
+            <p>
+                Recently I was toying around with Bitcoin.  I understood pretty quickly why CPU and GPU miners were no longer
+                competetive with custom hardware, but what I couldn't figure out is why GPU miners weren't much faster than CPU
+                miners (at least not on my hardware).
+            </p>
 
-    <p>If you need a refresher in hashes, I've made a <a href="hashes.html">modest attempt</a></p>
+            <p>
+                I wanted visuals, something a bit more accessible, like <a href="http://gizmodo.com/mining-bitcoin-with-pencil-and-paper-1640353309">mining bitcoin with pencil and paper</a>,
+                but with less talking and more pictures.  Hopefully other people find this interesting too.
+            </p>
 
-    <h3 id="example">The Language</h3>
+            <p>
+                If you need a refresher in hashes, I've made a <a href="hashes.html">modest attempt</a>.  For a rundown of the
+                visualization I've selected, see my <a href="dataviz.html">full explanation</a> or the sidebar.
+            </p>
 
-    <div>
-        <p>
-            The SHA family of hashes works mostly with 32 bit numbers.  This is how we will represent a 32 bit number in
-            these examples.
-        </p>
-        <p>
-            This is a representation of '0xffffffff' or 'all bits are set':
-        </p>
+            <h3>The Plan</h3>
 
-        <binary-pattern bits="0xffffffff"></binary-pattern>
+            <p>
+                One of the things you learn about data visualization is that often the key is not <em>how</em> you display the
+                data, but what data you choose to display.  If I showed you how a message travels through the 64 rounds of
+                mathematical calculations involved in creating a SHA-2 hash of a short message, I'd leave you bored, confused,
+                or possibly angry.  Instead I'm going to demonstrate how minor changes to the input affect the outcome of the
+                hash.
+            </p>
+        </section>
 
-        <p>
-            You might notice that there are 8 little boxes.  We've grouped bits into sets of 4, a common strategy
-            (otherwise known as hexadecimal or just 'hex' if you're in a hurry) for dealing with lots binary data.
-        </p>
+        <aside id="legend">
+            <h3>
+                Legend:
+            </h3>
 
-        <p>
-            And this is how we'll represent '0xaaaaaaaa', otherwise known as 'all even bits are set'.
-        </p>
+            <span>0x0123456789abcdef:</span>
+            <binary-pattern bits="0x0123456789abcdef"></binary-pattern>
+            <p>
+                A rectangle represents 4 bits (one hexadecimal digit). A color bar represents a 1 bit.
+            </p>
+        </aside>
 
-        <binary-pattern bits="0xaaaaaaaa"></binary-pattern>
+        <section id="main">
+            <h3>Main Section</h3>
+            <p>
+                The meat of the description will go here very soon.
+            </p>
+        </section>
+        <section id="afterward">
+            <h3 id="authors-and-contributors">Authors and Contributors</h3>
 
-        <p>
-            And here are 64 bits, one with each hex value (0x0123456789abcdef).
-        </p>
+            <p>
+                This code was inspired in part by an article on
+                <a href="http://gizmodo.com/mining-bitcoin-with-pencil-and-paper-1640353309">mining bitcoin with pencil and paper</a>,
+                and the accompanying video.  But none of this would have been possible without my lifelong appreciation of the
+                works of Bruce Schneier (cryptographer and security pundit) and Edward Tufte (maestro of data visualization).
+            </p>
 
-        <binary-pattern bits="0x0123456789abcdef"></binary-pattern>
-    </div>
+            <h3>
+                <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Support or Contact</h3>
 
-    <h3 id="the-plan">The Plan</h3>
-    <p>
-        Okay, this all sounds pretty good, but SHA-2 hashes are pretty big, and for some versions the internal data is
-        twice that big.  This is a SHA-256 hash:
-    </p>
-    <binary-pattern bits="0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"></binary-pattern>
-
-    <p>
-        We're not trying to invent a new graphical representation of hashes here.  At any rate, if I put two of
-        these next to each other you'd be hard pressed to tell them apart.  This also isn't bar codes for
-        cryptographers.  Instead, we're trying to visualize the hashing lifecycle.  For our purposes, instead of using
-        these colored bars to represent a hash, we're going to use them to represent the difference between two hashes.
-    </p>
-    <p>
-        In other words, a colored bar means the bit changed.
-    </p>
-
-    </h3>
-    <h3 id="authors-and-contributors">Authors and Contributors</h3>
-
-    <p>
-        This code was inspired in part by an article on
-        <a href="http://gizmodo.com/mining-bitcoin-with-pencil-and-paper-1640353309">mining bitcoin with pencil and paper</a>,
-        and the accompanying video.  But none of this would have been possible without my lifelong appreciation of the
-        works of Bruce Schneier (cryptographer and security pundit) and Edward Tufte (maestro of data visualization).
-    </p>
-
-    <h3>
-        <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span
-                class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-    <p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a
-            href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+            <p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a
+                    href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+        </section>
+    </article>
 
     <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/jdmarshall/hashing">Hashing</a> is maintained by <a
@@ -122,8 +110,8 @@
                 href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a
                 href="https://twitter.com/jasonlong">Jason Long</a>.</span>
     </footer>
+</div>
 
-</section>
 
 
 </body>

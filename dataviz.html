@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>Hashing by jdmarshall</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/binary-pattern.css" media="screen">
+
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/webcomponents.js/webcomponents.js"></script>
+
+    <!-- Imports custom element -->
+    <link rel="import" href="webcomponents/binary.html">
+</head>
+<body>
+<section class="page-header">
+    <h1 class="project-name">Hashing</h1>
+
+    <h2 class="project-tagline"></h2>
+    <a href="https://github.com/jdmarshall/hashing" class="btn">View on GitHub</a>
+</section>
+
+<section class="main-content">
+    <h3 id="example">The Visual Language</h3>
+
+    <div>
+        <p>
+            The SHA family of hashes works mostly with 32 bit numbers.  This is how we will represent a 32 bit number in
+            these examples.
+        </p>
+        <p>
+            This is a representation of '0xffffffff' or 'all bits are set':
+        </p>
+
+        <binary-pattern bits="0xffffffff"></binary-pattern>
+
+        <p>
+            You might notice that there are 8 little boxes.  We've grouped bits into sets of 4, a common strategy
+            (otherwise known as hexadecimal or just 'hex' if you're in a hurry) for dealing with lots binary data.
+        </p>
+
+        <p>
+            And this is how we'll represent '0xaaaaaaaa', otherwise known as 'all even bits are set'.
+        </p>
+
+        <binary-pattern bits="0xaaaaaaaa"></binary-pattern>
+
+        <p>
+            And here are 64 bits, one with each hex value (0x0123456789abcdef).
+        </p>
+
+        <binary-pattern bits="0x0123456789abcdef"></binary-pattern>
+    </div>
+
+    <h3 id="the-plan">The Plan</h3>
+    <p>
+        Okay, this all sounds pretty good, but SHA-2 hashes are pretty big, and for some versions the internal data is
+        twice that big.  This is a SHA-256 hash:
+    </p>
+    <binary-pattern bits="0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"></binary-pattern>
+
+    <p>
+        We're not trying to invent a new graphical representation of hashes here.  At any rate, if I put two of
+        these next to each other you'd be hard pressed to tell them apart.  This also isn't bar codes for
+        cryptographers.  Instead, we're trying to visualize the hashing lifecycle.  For our purposes, instead of using
+        these colored bars to represent a hash, we're going to use them to represent the difference between two hashes.
+    </p>
+    <p>
+        In other words, a colored bar means the bit changed.
+    </p>
+
+</section>
+
+
+</body>
+</html>
