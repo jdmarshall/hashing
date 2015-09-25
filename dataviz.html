@@ -57,22 +57,24 @@
         <binary-pattern bits="0x0123456789abcdef"></binary-pattern>
     </div>
 
-    <h3 id="the-plan">The Plan</h3>
     <p>
         Okay, this all sounds pretty good, but SHA-2 hashes are pretty big, and for some versions the internal data is
         twice that big.  This is a SHA-256 hash:
     </p>
-    <binary-pattern bits="0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"></binary-pattern>
+    <binary-pattern bits="0x7bb6318685092bc9d5dad0e0562e260f524f51e13ab38ba9e6dc6b95f22a474c"></binary-pattern>
 
     <p>
-        We're not trying to invent a new graphical representation of hashes here.  At any rate, if I put two of
+        We're not really trying to invent a new graphical representation of hashes here.  At any rate, if I put two of
         these next to each other you'd be hard pressed to tell them apart.  This also isn't bar codes for
         cryptographers.  Instead, we're trying to visualize the hashing lifecycle.  For our purposes, instead of using
         these colored bars to represent a hash, we're going to use them to represent the difference between two hashes.
     </p>
     <p>
-        In other words, a colored bar means the bit changed.
+        In other words, green colored bar means the bit changed.
     </p>
+
+    <binary-pattern bits="0x9ccaf59bc1175fa65ff793246eb342a2ef91614c4d038f186f14a39862da031e"
+                    versus="0x7bb6318685092bc9d5dad0e0562e260f524f51e13ab38ba9e6dc6b95f22a474c"></binary-pattern>
 
 </section>
 
