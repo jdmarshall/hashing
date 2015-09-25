@@ -23,8 +23,8 @@ binary-pattern .display {
     display: block;
     float: left;
 
-    width: 14px;
-    height: 15px;
+    width: 10px;
+    height: 22px;
 }
 
 .hex_0 {
@@ -33,7 +33,7 @@ binary-pattern .display {
 
 .hex_1 {
     background: linear-gradient(
-            to right,
+            to bottom,
             white, white 75%,
             transparent 75%
     );
@@ -41,7 +41,7 @@ binary-pattern .display {
 
 .hex_2 {
     background: linear-gradient(
-            to right,
+            to bottom,
             white 50%,
             transparent 50%, transparent 75%,
             white 75%
@@ -50,7 +50,7 @@ binary-pattern .display {
 
 .hex_3 {
     background: linear-gradient(
-            to right,
+            to bottom,
             white 50%,
             transparent 50%, transparent 100%
     );
@@ -58,7 +58,7 @@ binary-pattern .display {
 
 .hex_4 {
     background: linear-gradient(
-            to right,
+            to bottom,
             white 25%,
             transparent 25%, transparent 50%,
             white 50%
@@ -67,7 +67,7 @@ binary-pattern .display {
 
 .hex_5 {
     background: linear-gradient(
-            to right,
+            to bottom,
             white 25%,
             transparent 25%, transparent 50%,
             white 50%, white 75%,
@@ -77,7 +77,7 @@ binary-pattern .display {
 
 .hex_6 {
     background: linear-gradient(
-            to right,
+            to bottom,
             white 25%,
             transparent 25%, transparent 75%,
             white 75%
@@ -86,7 +86,7 @@ binary-pattern .display {
 
 .hex_7 {
     background: linear-gradient(
-            to right,
+            to bottom,
             white 25%,
             transparent 25%, transparent 100%
     );
@@ -94,7 +94,7 @@ binary-pattern .display {
 
 .hex_8 {
     background: linear-gradient(
-            to right,
+            to bottom,
             transparent 25%,
             white 25%, white 100%
     );
@@ -102,7 +102,7 @@ binary-pattern .display {
 
 .hex_9 {
     background: linear-gradient(
-            to right,
+            to bottom,
             transparent 25%,
             white 25%, white 75%,
             transparent 75%, transparent 100%
@@ -111,7 +111,7 @@ binary-pattern .display {
 
 .hex_A {
     background: linear-gradient(
-            to right,
+            to bottom,
             transparent 25%,
             white 25%, white 50%,
             transparent 50%, transparent 75%,
@@ -121,7 +121,7 @@ binary-pattern .display {
 
 .hex_B {
     background: linear-gradient(
-            to right,
+            to bottom,
             transparent 25%,
             white 25%, white 50%,
             transparent 50%, transparent 100%
@@ -130,7 +130,7 @@ binary-pattern .display {
 
 .hex_C {
     background: linear-gradient(
-            to right,
+            to bottom,
             transparent 50%,
             white 50%, white 100%
     );
@@ -138,7 +138,7 @@ binary-pattern .display {
 
 .hex_D {
     background: linear-gradient(
-            to right,
+            to bottom,
             transparent 50%,
             white 50%, white 75%,
             transparent 75%, transparent 100%
@@ -147,7 +147,7 @@ binary-pattern .display {
 
 .hex_E {
     background: linear-gradient(
-            to right,
+            to bottom,
             transparent 75%,
             white 75%, white 100%
     );
