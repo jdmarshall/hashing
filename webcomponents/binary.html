@@ -6,11 +6,13 @@
 
     // Fires when an instance of the element is created
     BinaryPattern.createdCallback = function () {
-        var shadowRoot = this.createShadowRoot();
+        //var shadowRoot = this.createShadowRoot();
         var element = targetDocument.createElement('span');
         element.setAttribute('class', 'display');
 
-        shadowRoot.appendChild(element);
+        //TODO: (JDM) Chrome is having shadow DOM issues.  Figure it out
+//        shadowRoot.appendChild(element);
+        this.appendChild(element);
 
         // Creates the shadow root
         var value = this.getAttribute('bits');
@@ -34,7 +36,7 @@
 
         for (var i = 0; i < hexValues.length; i++) {
             var hexValue = hexValues[i];
-            var element = targetDocument.createElement('span');
+            var element = targetDocument.createElement('span').textContent = "0";
 
             element.setAttribute('class', 'hex hex_' + hexValue);
             element.setAttribute('title', hexValue);
