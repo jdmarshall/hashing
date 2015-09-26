@@ -36,7 +36,7 @@
 
         for (var i = 0; i < hexValues.length; i++) {
             var hexValue = hexValues[i];
-            var element = targetDocument.createElement('span').textContent = "0";
+            var element = targetDocument.createElement('span');
 
             element.setAttribute('class', 'hex hex_' + hexValue);
             element.setAttribute('title', hexValue);
