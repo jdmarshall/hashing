@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Imports custom element -->
+    <link rel="import" href="binary.html"/>
+    <script type="application/javascript" charset="UTF-8" src="../lib/sha256.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    /** @type {HTMLElement} */
+    var HashRounds = Object.create(HTMLElement.prototype);
+    // Refers to the "importer", which is index.html
+    var targetDocument = document;
+
+    // Fires when an instance of the element is created
+    HashRounds.createdCallback = function () {
+        //var shadowRoot = this.createShadowRoot();
+        var element = targetDocument.createElement('div');
+        element.setAttribute('class', 'rounds');
+
+        //TODO: (JDM) Chrome is having shadow DOM issues.  Figure it out
+//        shadowRoot.appendChild(element);
+        this.appendChild(element);
+
+        // Creates the shadow root
+        var input = this.getAttribute('input');
+        var rounds = this.getAttribute('rounds') || 0;
+
+        for (var round = 0; round <= rounds; round++) {
+            this.showRound(element, input, round);
+        }
+    };
+
+    /**
+     * Tack a binary display representing 'round' rounds of the SHA256 hash algorithm
+     *
+     * @param parent {HTMLElement} parent DOM element
+     * @param input {String} the value to hash
+     * @param round {number} round number
+     */
+    HashRounds.showRound = function (parent, input, rounds) {
+        var pattern = targetDocument.createElement('binary-pattern');
+
+        var bits = Sha256.hash(input, rounds);
+        pattern.setAttribute('bits', '0x' + bits);
+
+        parent.appendChild(pattern);
+    };
+
+    window.MyElement = document.registerElement('hash-rounds', {
+        prototype: HashRounds
+    });
+</script>
+</body>
+</html>

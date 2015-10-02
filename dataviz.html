@@ -15,7 +15,8 @@
     <script type="text/javascript" src="bower_components/webcomponents.js/webcomponents.js"></script>
 
     <!-- Imports custom element -->
-    <link rel="import" href="webcomponents/binary.html">
+    <link rel="import" href="webcomponents/binary.html"/>
+    <link rel="import" href="webcomponents/hash-rounds.html"/>
 </head>
 <body>
 <section class="page-header">
@@ -26,8 +27,9 @@
 </section>
 
 <section class="main-content">
-    <h3 id="example">The Visual Language</h3>
+    <h2 id="example">The Visual Language</h2>
 
+    <h3>Displaying binary data</h3>
     <div>
         <p>
             The SHA family of hashes works mostly with 32 bit numbers.  This is how we will represent a 32 bit number in
@@ -76,8 +78,28 @@
     <binary-pattern bits="0x9ccaf59bc1175fa65ff793246eb342a2ef91614c4d038f186f14a39862da031e"
                     versus="0x7bb6318685092bc9d5dad0e0562e260f524f51e13ab38ba9e6dc6b95f22a474c"></binary-pattern>
 
-</section>
 
+    <h3>Displaying hashing 'rounds'</h3>
+    <p>
+        Most hash algorithms achieve their 'strength' by repeating a simple algorithm enough times that it is
+        unimaginable that anyone could reverse or cheat the entire operation.  This loop count is sometimes called
+        'rounds'.  Before the first round a little bit of logic may run, but the main part of the algorithm is often
+        a separate operation, as is the code for emitting the final value.
+    </p>
+
+    <p>
+        This is the hash value for "I owe you $10" if you do 0 (zero) rounds of SHA-2:
+    </p>
+
+    <hash-rounds input="I owe you $10" rounds="0"></hash-rounds>
+
+    <p>
+        This is the hash value for "I owe you $10" if you do 1 (one) rounds of SHA-2:
+    </p>
+
+    <hash-rounds input="I owe you $10" rounds="1"></hash-rounds>
+
+</section>
 
 </body>
 </html>
