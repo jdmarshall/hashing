@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
 <script type="text/javascript">
     /** @type {HTMLElement} */
     var BinaryPattern = Object.create(HTMLElement.prototype);
@@ -8,7 +15,7 @@
     BinaryPattern.createdCallback = function () {
         //var shadowRoot = this.createShadowRoot();
         var element = targetDocument.createElement('span');
-        element.setAttribute('class', 'display');
+        element.setAttribute('class', 'binary');
 
         //TODO: (JDM) Chrome is having shadow DOM issues.  Figure it out
 //        shadowRoot.appendChild(element);
@@ -75,3 +82,5 @@
         prototype: BinaryPattern
     });
 </script>
+</body>
+</html>

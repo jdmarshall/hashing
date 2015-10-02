@@ -6,12 +6,12 @@ binary-pattern {
     overflow: hidden;
 }
 
-binary-pattern .display {
+binary-pattern .binary {
     display: inline-block;
     background-color: #339;
 }
 
-.display.diff {
+.binary.diff {
     background-color: #383;
 }
 
