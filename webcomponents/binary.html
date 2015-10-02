@@ -11,8 +11,21 @@
     // Refers to the "importer", which is index.html
     var targetDocument = document;
 
-    // Fires when an instance of the element is created
+    /**
+     *  Fires when an instance of the element is created
+     */
     BinaryPattern.createdCallback = function () {
+        this.buildDisplay();
+    };
+
+    /**
+     * Fires when the instance of the element has an attribute changed.
+     */
+    BinaryPattern.attributeChangedCallback = function () {
+        this.buildDisplay();
+    };
+
+    BinaryPattern.buildDisplay = function() {
         //var shadowRoot = this.createShadowRoot();
         var element = targetDocument.createElement('span');
         element.setAttribute('class', 'binary');
@@ -25,7 +38,7 @@
         var value = this.getAttribute('bits');
         var versus = this.getAttribute('versus');
 
-        if (value.startsWith('0x')) {
+        if (value && value.startsWith('0x')) {
             if (versus !== null && (versus.startsWith('0x'))) {
                 this.fromDiff(element, value.substr(2), versus.substr(2));
             } else {
