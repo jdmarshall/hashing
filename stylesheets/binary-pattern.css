@@ -7,8 +7,16 @@ binary-pattern {
 }
 
 binary-pattern .binary {
-    display: inline-block;
+    display: flex;
+    flex-wrap: nowrap;
     background-color: #339;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.example .binary {
+    max-width: 150px;
+    margin: 0px;
 }
 
 .binary.diff {
@@ -21,9 +29,8 @@ binary-pattern .binary {
     background-origin: padding-box;
 
     display: block;
-    float: left;
+    flex: 1;
 
-    width: 10px;
     height: 22px;
 }
 
