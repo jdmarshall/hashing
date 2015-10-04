@@ -10,12 +10,12 @@ binary-pattern .binary {
     display: flex;
     flex-wrap: nowrap;
     background-color: #339;
-    max-width: 800px;
+    max-width: 740px;
     margin: 0 auto;
 }
 
 .example .binary {
-    max-width: 150px;
+    max-width: 140px;
     margin: 0px;
 }
 
