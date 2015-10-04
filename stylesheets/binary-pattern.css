@@ -25,13 +25,18 @@ binary-pattern .binary {
 
 .hex {
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1px solid #aaa;
+    border-left-width: 0px;
     background-origin: padding-box;
 
     display: block;
     flex: 1;
 
     height: 22px;
+}
+
+.hex:first-child {
+    border-left-width: 1px;
 }
 
 .hex_0 {
