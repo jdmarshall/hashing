@@ -25,9 +25,14 @@
         // Creates the shadow root
         var input = this.getAttribute('input');
         var rounds = this.getAttribute('rounds') || 0;
+        var all = this.getAttribute('complete') === 'true';
 
-        for (var round = 0; round <= rounds; round++) {
-            this.showRound(element, input, round);
+        if (all) {
+            for (var round = 0; round <= rounds; round++) {
+                this.showRound(element, input, round);
+            }
+        } else {
+            this.showRound(element, input, rounds);
         }
     };
 
