@@ -24,15 +24,16 @@
 
         // Creates the shadow root
         var input = this.getAttribute('input');
+        var versus = this.getAttribute('versus');
         var rounds = this.getAttribute('rounds') || 0;
         var all = this.getAttribute('complete') === 'true';
 
         if (all) {
             for (var round = 0; round <= rounds; round++) {
-                this.showRound(element, input, round);
+                this.showRound(element, round, input);
             }
         } else {
-            this.showRound(element, input, rounds);
+            this.showRound(element, rounds, input);
         }
     };
 
@@ -41,9 +42,9 @@
      *
      * @param parent {HTMLElement} parent DOM element
      * @param input {String} the value to hash
-     * @param round {number} round number
+     * @param rounds {number} round number
      */
-    HashRounds.showRound = function (parent, input, rounds) {
+    HashRounds.showRound = function (parent, rounds, input) {
         var pattern = targetDocument.createElement('binary-pattern');
 
         var bits = Sha256.hash(input, rounds);
