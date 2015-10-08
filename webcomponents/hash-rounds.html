@@ -30,10 +30,10 @@
 
         if (all) {
             for (var round = 0; round <= rounds; round++) {
-                this.showRound(element, round, input);
+                this.showRound(element, round, input, versus);
             }
         } else {
-            this.showRound(element, rounds, input);
+            this.showRound(element, rounds, input, versus);
         }
     };
 
@@ -41,14 +41,20 @@
      * Tack a binary display representing 'round' rounds of the SHA256 hash algorithm
      *
      * @param parent {HTMLElement} parent DOM element
-     * @param input {String} the value to hash
      * @param rounds {number} round number
+     * @param input {String} the value to hash
+     * @param versus {String|undefined} the value to hash against
      */
-    HashRounds.showRound = function (parent, rounds, input) {
+    HashRounds.showRound = function (parent, rounds, input, versus) {
         var pattern = targetDocument.createElement('binary-pattern');
 
         var bits = Sha256.hash(input, rounds);
         pattern.setAttribute('bits', '0x' + bits);
+
+        if (versus != null) {
+            var versusBits = Sha256.hash(versus, rounds);
+            pattern.setAttribute('versus', '0x' + versusBits);
+        }
 
         parent.appendChild(pattern);
     };

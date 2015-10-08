@@ -30,6 +30,10 @@
         var element = targetDocument.createElement('span');
         element.setAttribute('class', 'binary');
 
+        if (this.lastChild) {
+            this.removeChild(this.lastChild);
+        }
+
         //TODO: (JDM) Chrome is having shadow DOM issues.  Figure it out
 //        shadowRoot.appendChild(element);
         this.appendChild(element);
