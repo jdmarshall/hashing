@@ -79,59 +79,7 @@
                     versus="0x7bb6318685092bc9d5dad0e0562e260f524f51e13ab38ba9e6dc6b95f22a474c"></binary-pattern>
 
 
-    <h3>Displaying hashing 'rounds'</h3>
-    <p>
-        Most hash algorithms achieve their 'strength' by repeating a simple algorithm enough times that it is
-        unimaginable that anyone could reverse or cheat the entire operation.  This loop count is sometimes called
-        'rounds'.  Before the first round a little bit of logic may run, but the main part of the algorithm is often
-        a separate operation, as is the code for emitting the final value.
-    </p>
 
-    <p>
-        This is the hash value for "I owe you $10" if you do 0 (zero) rounds of SHA-2:
-    </p>
-
-    <hash-rounds input="I owe you $10" rounds="0"></hash-rounds>
-
-    <p>
-        This is the hash value for "I owe you $10" if you do 1 (one) rounds of SHA-2:
-    </p>
-
-    <hash-rounds input="I owe you $10" rounds="1"></hash-rounds>
-
-    <p>
-        Which changes almost half the bits:
-    </p>
-
-    <binary-pattern bits="0xd413ccce76cf5d0a78dde6e44a9fea74a21ca4fe360ad1183f07b356b7c19a32"
-                    versus="0xaf32de2b257194ecf7d6a1f7e1bee8ac32f6a498ec13bb0bba8942377b64a6c4"></binary-pattern>
-
-    <p>
-        The fact is, any similarity between bits in round 1 and round 2 are purely coincidental, because each round of
-        the hash algorithm rearranges all of the bits.  Like a lot of hashes, each round moves the data around.  In 
-        SHA-2 a round involves reordering the bits in each slot and <em>then</em> moving each slot one position to the
-        right. This means comparing one round to the next is comparing apples and oranges.  So what <em>can</em> we 
-        compare?
-    </p>
-
-    <p>
-        Instead we should compare two similar messages to each other:
-    </p>
-
-    <hash-rounds input="I owe you $10" versus="I owe you $50" rounds="3" ></hash-rounds>
-    
-    <p>
-        That's "I owe you $10" versus "I owe you $50" at 3 rounds.  There's only one bit difference between them, and 
-        only one bit of difference in the messages.  But by round 10:  
-    </p>
-
-    <hash-rounds input="I owe you $10" versus="I owe you $50" rounds="10" complete="true"></hash-rounds>
-
-    <p>
-        And the full hash, after only changing the tens digit in the quantity owed, ends up as:
-    </p>
-
-    <hash-rounds input="I owe you $10" versus="I owe you $50" rounds="64"></hash-rounds>
 </section>
 
 </body>
