@@ -246,7 +246,6 @@ a {
 
 
 aside {
-    margin-right: -6rem;
     font-size: 0.75rem;
     width: 245px;
     padding: 1rem 1.25rem;
@@ -255,4 +254,30 @@ aside {
 
 aside img {
     width: 160px;
+}
+
+@media screen and (min-width: 64em) {
+    aside {
+        padding-left: 1.5rem;
+        margin-right: -6rem;
+    }
+}
+
+@media screen and (min-width: 42em) and (max-width: 64em) {
+    aside {
+        margin-right: -4rem;
+    }
+}
+
+@media screen and (max-width: 42em) {
+    aside {
+        float: none;
+        width: auto;
+        padding: 2.5rem 0 1rem;
+    }
+    
+    aside img {
+        display: block;
+        width: 320px;
+    }
 }
