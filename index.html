@@ -136,7 +136,7 @@
             <hash-rounds input="I owe you $10" versus="I owe you $50" rounds="3" ></hash-rounds>
 
             <p>
-                That's "I owe you $10" versus "I owe you $50" at 3 rounds.  There's only one bit difference between them, and
+                That's "I owe you $10" versus "I owe you $50" at 3 rounds.  There's only two bits difference between them, and
                 only one bit of difference in the messages.  But by round 10:
             </p>
 
@@ -146,7 +146,27 @@
                 And the full hash, after only changing the tens digit in the quantity owed, ends up as:
             </p>
 
-            <hash-rounds input="I owe you $10" versus="I owe you $50" rounds="64"></hash-rounds>        </section>
+            <hash-rounds input="I owe you $10" versus="I owe you $50" rounds="64"></hash-rounds>        
+        
+            <h4>Tamper Resistance/Evidence</h4>
+            <p>
+                This is precisely the sort of behavior one looks for in a cryptographic hash: tamper resistance.  If 
+                anyone changes anything (on accident or on purpose), we want to know before we do anything rash with the
+                wrong information.  This is also why so many people use hashes for file downloads.  It lets you know if 
+                something went wrong with the transfer, and if you can trust the hash (most sites do NOT give you any 
+                reason to trust the hash, however) then you know that you got the complete version of the file you 
+                expected.
+            </p>
+            <p>
+                Several times in my career, I've encountered a popular piece of software that was released with a bug, 
+                and then silently updated almost immediately.  In the cases I am aware of this happening it is because
+                we had several people who were experiencing a bug and nobody else could recreate it.  It turned out in
+                two of those situations that despite us all having downloading 2.5.1 of the application, only the people
+                who downloaded it first had the problem, and their installers had a different hash than the rest of us.  
+                After having spent man-days diagnosing the problem, it's frustrating for the answer to be 'uninstall and
+                download it again' but at least we had our answer.
+            </p>
+        </section>
         <section id="afterward">
             <h3 id="authors-and-contributors">Authors and Contributors</h3>
 
